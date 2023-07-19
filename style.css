@@ -1,0 +1,72 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/*light mode*/
+:root {
+	--dark: #292C35;
+	--light: #F1F1F1;
+	--label: #111;
+    --outline-color: 10px solid rgba(40, 43, 52, 0.2);
+    --backgroud-color: var(--light);
+    --animation-switch: slide-out 0.2s;
+}
+
+/*dark mode*/
+.dark {
+    --outline-color: 10px solid rgba(241, 241, 241, 0.2);
+    --backgroud-color: var(--dark);
+    --animation-switch: slide-in 0.2s forwards;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--backgroud-color);
+}
+
+#label {
+    width: 85px;
+    height: auto;
+    border-radius: 50px;
+    padding: 3px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--label);
+    position: relative;
+    overflow: visible;
+}
+
+#label img {
+    width: 32px;
+}
+
+#ball {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+    background: var(--light);
+    position: absolute;
+    transition: all 0.2s;
+    left: 3px;
+    z-index: 1;
+    animation: var(--animation-switch);
+}
+
+.dark #ball {
+    right: 3px;
+    animation: var(--animation-switch); 
+}
+
+#ball:hover {
+    outline: var(--outline-color);
+}
