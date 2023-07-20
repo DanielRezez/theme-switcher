@@ -9,25 +9,28 @@
 	--dark: #292C35;
 	--light: #F1F1F1;
 	--label: #111;
-    --outline-color: 10px solid rgba(40, 43, 52, 0.2);
+    --outline-color: 10px solid rgba(40, 43, 52, 0.5);
     --backgroud-color: var(--light);
-    --animation-switch: slide-out 0.2s;
 }
 
 /*dark mode*/
 .dark {
     --outline-color: 10px solid rgba(241, 241, 241, 0.2);
     --backgroud-color: var(--dark);
-    --animation-switch: slide-in 0.2s forwards;
+    animation: slide-in 0.2s linear;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
 }
 
 body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: var(--backgroud-color);
+    transition: background 0.5s;
 }
 
 #label {
@@ -57,16 +60,42 @@ body {
     background: var(--light);
     position: absolute;
     transition: all 0.2s;
-    left: 3px;
     z-index: 1;
-    animation: var(--animation-switch);
+    animation: slide-out 0.2s linear;
+    animation-fill-mode: backwards;
 }
 
 .dark #ball {
-    right: 3px;
-    animation: var(--animation-switch); 
+    animation: slide-in 0.2s linear;
+    animation-fill-mode: forwards;
 }
 
 #ball:hover {
     outline: var(--outline-color);
+}
+
+.text {
+    justify-content: center;
+    font-size: 32px;
+    font-weight: normal;
+    margin-top: 36px;
+    color: var(--dark);
+}
+
+.dark .text {
+    color: var(--light);
+}
+
+.invisible {
+    display: none;
+}
+
+@keyframes slide-in {
+    from{left: 3px;}
+    to{left: 50px;}
+}
+
+@keyframes slide-out {
+    from{left: 50px;}
+    to{left: 3px;}
 }
