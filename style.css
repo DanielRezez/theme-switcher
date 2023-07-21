@@ -75,11 +75,12 @@ body {
 }
 
 .text {
-    justify-content: center;
+    text-align: center;
     font-size: 32px;
-    font-weight: normal;
+    font-weight: 500;
     margin-top: 36px;
     color: var(--dark);
+    font-family: 'League Spartan', sans-serif;
 }
 
 .dark .text {
